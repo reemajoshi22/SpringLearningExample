@@ -10,6 +10,7 @@ public class MainApp {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
                 "AppContext.xml");
         Employee employee = (Employee) applicationContext.getBean("employee");
+        /*Employee employee = (Employee) applicationContext.getBean("employeeName");*/
         System.out.println("Employee details fetched from application context : " );
         employee.print();
     }

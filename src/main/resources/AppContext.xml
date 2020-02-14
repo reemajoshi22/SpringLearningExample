@@ -1,37 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans  xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<!--used to fetch values of placeholders from property file-->
-	<bean
-			class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="locations" value="classpath:/application.properties" />
-	</bean>
-	<!--bean creation with setter method-->
+    <!--used to fetch values of placeholders from property file-->
+    <bean
+            class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" value="classpath:/application.properties"/>
+    </bean>
 
-	<bean id="employee" class="xmlBased.Employee">
-		<property name="emp_id" value="${EMP.ID}"></property>
-		<property name="emp_name" value="${EMP.NAME}"></property>
-		<property name="employee_dept" value="cse"></property>
-		<property name="employee_salary" value="100.10"></property>
-		<property name="details" ref="details"></property>
+    <!-- <context:annotation-config />-->
+    <bean
+            class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+    <!--bean creation with setter method-->
 
-		<!--<property name="emp_id" value="1"></property>
-		<property name="emp_name" value="reema joshi"></property>
-		<property name="employee_dept" value="cse"></property>
-		<property name="employee_salary" value="100.10"></property>
-		<property name="details" ref="details"></property>-->
+    <bean id="employee" name="employeeName" class="xmlBased.Employee">
+        <property name="emp_id" value="${EMP.ID}"></property>
+        <property name="emp_name" value="${EMP.NAME}"></property>
+        <property name="employee_dept" value="cse"></property>
+        <property name="employee_salary" value="100.10"></property>
+        <!--<property name="details" ref="details"></property>-->
+
+        <!--<property name="emp_id" value="1"></property>
+        <property name="emp_name" value="reema joshi"></property>
+        <property name="employee_dept" value="cse"></property>
+        <property name="employee_salary" value="100.10"></property>
+        <property name="details" ref="details"></property>-->
 
 
-	</bean>
-	<bean id="details" class="xmlBased.EmployeeDetails">
-		<property name="age" value="20"></property>
-		<property name="sex" value="female"></property>
-	</bean>
+    </bean>
+    <bean id="details" class="xmlBased.EmployeeDetails">
+        <property name="age" value="20"></property>
+        <property name="sex" value="female"></property>
+    </bean>
 
-	<!-- below is the bean creation with constructor argument -->
+    <bean id="details2" class="xmlBased.EmployeeDetails">
+        <property name="age" value="26"></property>
+        <property name="sex" value="Female"></property>
+    </bean>
+
+    <!-- below is the bean creation with constructor argument -->
 </beans>

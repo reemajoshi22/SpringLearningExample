@@ -1,13 +1,17 @@
 package xmlBased;
 
-public class Employee {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
+public class Employee {
 
     int emp_id;
     String emp_name;
     String employee_dept;
     Float employee_salary;
 
+    @Qualifier("details2")
+    @Autowired
     EmployeeDetails details;
 
     public EmployeeDetails getDetails() {
